@@ -1,0 +1,16 @@
+[Unit]
+Description=Nebulous Dedicated Server
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/steam/NFCServer/NebulousDedicatedServer -nographics -batchmode -logFile /var/log/nfc-server/server.log -serverConfig /home/steam/NFCServer/Config/config.xml
+WorkingDirectory=/home/steam/NFCServer/
+User=steam
+Group=steam
+Restart=always
+RestartSec=30
+
