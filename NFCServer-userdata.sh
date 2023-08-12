@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CONFIG_BUCKET="nebulous-config-files"
+MODS_BUCKET="nebulous-map-mods"
 
 echo "Starting CloudWatch setup"
 add-apt-repository multiverse -y
@@ -9,7 +11,7 @@ apt install awscli -y
 wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb -O /home/ubuntu/amazon-cloudwatch-agent.deb
 dpkg -i -E /home/ubuntu/amazon-cloudwatch-agent.deb
 
-aws s3 cp s3://nebulous-config-files/cloudwatch-config.json /home/ubuntu/cloudwatch-config.json
+aws s3 cp s3://$CONFIG_BUCKET/cloudwatch-config.json /home/ubuntu/cloudwatch-config.json
 /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/home/ubuntu/cloudwatch-config.json
 
 
@@ -50,15 +52,15 @@ su steam <<STEAM_CMDS
 /usr/games/steamcmd +force_install_dir /home/steam/SteamSDK +login anonymous +app_update 1007 validate +quit
 ln -s /home/steam/SteamSDK/linux64/steamclient.so /home/steam/.steam/sdk64/steamclient.so
 mkdir /home/steam/NFCServer/steamapps/workshop/content/887570/
-aws s3 sync s3://nebulous-map-mods /home/steam/NFCServer/steamapps/workshop/content/887570/
-aws s3 cp s3://nebulous-config-files/appworkshop_887570.acf /home/steam/NFCServer/steamapps/workshop/appworkshop_887570.acf
+aws s3 sync s3://$MODS_BUCKET /home/steam/NFCServer/steamapps/workshop/content/887570/
+aws s3 cp s3://$CONFIG_BUCKET/appworkshop_887570.acf /home/steam/NFCServer/steamapps/workshop/appworkshop_887570.acf
 chmod 766 /home/steam/NFCServer/steamapps/workshop/appworkshop_887570.acf
-aws s3 cp s3://nebulous-config-files/config.xml /home/steam/NFCServer/Config/config.xml
+aws s3 cp s3://$CONFIG_BUCKET/config.xml /home/steam/NFCServer/Config/config.xml
 STEAM_CMDS
 
 
 echo "Configuring nfc-server service"
-aws s3 cp s3://nebulous-config-files/nfc-server.service /etc/systemd/system/nfc-server.service
+aws s3 cp s3://$CONFIG_BUCKET/nfc-server.service /etc/systemd/system/nfc-server.service
 
 systemctl daemon-reload
 systemctl enable --now nfc-server
