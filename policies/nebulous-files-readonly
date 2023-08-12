@@ -1,0 +1,22 @@
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:List*",
+                "s3-object-lambda:Get*",
+                "s3-object-lambda:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::nebulous-config-files",
+                "arn:aws:s3:::nebulous-config-files/*",
+                "arn:aws:s3:::nebulous-map-mods",
+                "arn:aws:s3:::nebulous-map-mods/*"
+            ]
+        }
+    ]
+}
+
