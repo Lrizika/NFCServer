@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CONFIG_BUCKET="nebulous-config-files"
-MODS_BUCKET="nebulous-map-mods"
+CONFIG_BUCKET="YOUR-CONFIG-BUCKET"
+MODS_BUCKET="YOUR-MODS-BUCKET"
 
 if [[ $BASH_SOURCE = */* ]]; then
     cd -- "${BASH_SOURCE%/*}/"
