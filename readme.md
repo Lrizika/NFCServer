@@ -14,7 +14,7 @@
 
 # Deploying a Nebulous: Fleet Command dedicated server to AWS
 
-This script automates the deployment of the N:FC dedicated server to an AWS EC2 instance (c6a.large by default). Note that it does not configure any sort of automatic backups, restarts, or updates (I only run a server for several hours a week, and as such simply terminate the instance when I am done) - you may wish to look into Switchback's [N-FE-ASRU](https://github.com/switchback028/N-FE-ASRU/) utility if such are desired.
+This script automates the deployment of the N:FC dedicated server to an AWS EC2 instance (c7a.xlarge by default). Note that it does not configure any sort of automatic backups, restarts, or updates (I only run a server for several hours a week, and as such simply terminate the instance when I am done) - you may wish to look into Switchback's [N-FE-ASRU](https://github.com/switchback028/N-FE-ASRU/) utility if such are desired.
 
 ## Prerequisites
 
