@@ -48,7 +48,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install steamcmd -y
 echo "Running steam user commands"
 su steam <<STEAM_CMDS
 echo "Installing NFC Dedicated Server (testing branch)"
-/usr/games/steamcmd +force_install_dir /home/steam/NFCServer +login anonymous +app_update 2353090 validate +quit
+/usr/games/steamcmd +force_install_dir /home/steam/NFCServer +login anonymous +app_update 2353090 -beta testing validate +quit
 echo "Installing Steam SDK"
 /usr/games/steamcmd +force_install_dir /home/steam/SteamSDK +login anonymous +app_update 1007 validate +quit
 echo "Copying required .so files from Steam SDK"

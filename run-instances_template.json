@@ -2,8 +2,8 @@
   "MaxCount": 1,
   "MinCount": 1,
   "ImageId": "ami-03f65b8614a860c29",
-  "InstanceType": "c6a.large",
-  "KeyName": "NFCServer",
+  "InstanceType": "c7a.xlarge",
+  "KeyName": "NFCServer-desktop",
   "SecurityGroups": [
     "NFC Dedicated Server"
   ],
